@@ -6,6 +6,7 @@
   "author": "Atilla K. ŞİMŞEK <info@atillakurtulussimsek.com.tr>",
   "license": "MIT",
   "dependencies": {
+    "chalk": "^4.1.1",
     "express": "^4.17.1"
   }
 }
