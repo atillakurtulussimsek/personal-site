@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const Config = require('./Config');
 const { getIP, skipLog, getTime } = require('./Utils');
+const { Data } = require('./Config');
 
 const App = express();
 const Server = http.createServer(App);
@@ -49,7 +50,20 @@ Server.on('listening', () => {
     }
 });
 
-mongoose.connection.on("connecting", () => { });
-mongoose.connection.on("connected", () => { });
-mongoose.connection.on("disconnected", () => { });
-mongoose.connection.on("reconnected", () => { });
+mongoose.connection.on("connecting", () => {
+    console.log(`[${chalk.bold.blue('MongoDB')}] Database connection is being established, please wait.`);
+    DatabaseStatus = false
+    return;
+});
+
+mongoose.connection.on("connected", () => {
+    console.log(`[${chalk.bold.blue('MongoDB')}] Database connection successfully established.`);
+    DatabaseStatus = true
+    return;
+});
+
+mongoose.connection.on("disconnected", () => {
+    console.log(`[${chalk.bold.red('MongoDB')}] The database connection has been lost. Attempting to reconnect.`);
+    DatabaseStatus = false
+    return;
+});
