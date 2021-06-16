@@ -27,6 +27,8 @@ App.use(express.urlencoded({ extended: false }));
 App.use(cookieParser());
 App.use(session({ secret: Config.Auth.SessionSecret, resave: false, saveUninitialized: true }));
 
+global.DatabaseStatus = false
+
 // CDN Servers
 App.use('/assets', express.static(path.join(__dirname, 'public')));
 
@@ -43,6 +45,6 @@ Server.on('listening', () => {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useFindAndModify: true
-        }, function (err, status) { return; });
+        }, function (err, status) { if(err) return console.log(err); });
     }
 });
