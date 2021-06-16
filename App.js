@@ -26,7 +26,7 @@ module.exports = (Client) => {
     App.use(express.json());
     App.use(express.urlencoded({ extended: false }));
     App.use(cookieParser());
-    App.use(session({ secret: Config, resave: false, saveUninitialized: true }));
+    App.use(session({ secret: Config.Auth.SessionSecret, resave: false, saveUninitialized: true }));
 
     // CDN Servers
     App.use('/assets', express.static(path.join(__dirname, 'public')));
