@@ -4,5 +4,8 @@
   "main": "App.js",
   "repository": "https://github.com/atillakurtulussimsek/personal-site.git",
   "author": "Atilla K. ŞİMŞEK <info@atillakurtulussimsek.com.tr>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
