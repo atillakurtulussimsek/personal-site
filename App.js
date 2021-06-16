@@ -34,7 +34,7 @@ module.exports = (Client) => {
     // Routers
     App.use('/', require('./routers/Index'));
 
-    Server.listen(Config.Server.Port ? Config.Server.Port : 3000);
+    Server.listen(Config.WebServer.Port ? Config.WebServer.Port : 3000);
     Server.on('error', (error) => { /* Hata işlemleri ve loglamaları buraya gelecek. */ });
     Server.on('listening', () => {
         console.log(`[${chalk.bold.blue('Server')}] Server has started successfully!`);
