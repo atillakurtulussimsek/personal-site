@@ -45,6 +45,11 @@ Server.on('listening', () => {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useFindAndModify: true
-        }, function (err, status) { if(err) return console.log(err); });
+        }, function (err, status) { if (err) return console.log(err); });
     }
 });
+
+mongoose.connection.on("connecting", () => { });
+mongoose.connection.on("connected", () => { });
+mongoose.connection.on("disconnected", () => { });
+mongoose.connection.on("reconnected", () => { });
