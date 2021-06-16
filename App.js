@@ -51,7 +51,7 @@ Server.on('listening', () => {
 });
 
 mongoose.connection.on("connecting", () => {
-    console.log(`[${chalk.bold.blue('MongoDB')}] Database connection is being established, please wait.`);
+    console.log(`[${chalk.bold.yellow('MongoDB')}] Database connection is being established, please wait.`);
     DatabaseStatus = false
     return;
 });
