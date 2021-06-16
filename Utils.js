@@ -1,3 +1,5 @@
+const moment = require('moment-timezone');
+
 exports.skipLog = (req, res) => {
     var url = req.url;
     if (url.indexOf('?') > 0)
@@ -6,4 +8,8 @@ exports.skipLog = (req, res) => {
         return true;
     }
     return false;
+}
+
+exports.getTime = (Clean = false) => {
+    if(Clean == true){ return moment().tz("Europe/Istanbul").format("HH:mm:ss"); }else{ return "**``[" + moment().tz("Europe/Istanbul").format("HH:mm:ss") + "]``**"; }
 }
