@@ -1,7 +1,7 @@
 {
   "name": "albaysimsekPersonal",
   "version": "0.0.1",
-  "main": "index.js",
+  "main": "App.js",
   "repository": "https://github.com/atillakurtulussimsek/personal-site.git",
   "author": "Atilla K. ŞİMŞEK <info@atillakurtulussimsek.com.tr>",
   "license": "MIT"
