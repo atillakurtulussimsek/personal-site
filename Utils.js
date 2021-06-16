@@ -13,3 +13,7 @@ exports.skipLog = (req, res) => {
 exports.getTime = (Clean = false) => {
     if(Clean == true){ return moment().tz("Europe/Istanbul").format("HH:mm:ss"); }else{ return "**``[" + moment().tz("Europe/Istanbul").format("HH:mm:ss") + "]``**"; }
 }
+
+exports.getIP = (req) => {
+    return (typeof req.headers['x-forwarded-for'] === 'string' && req.headers['x-forwarded-for'].split(',').shift()) || req.connection?.remoteAddress || req.socket?.remoteAddress || req.connection?.socket?.remoteAddress
+}
