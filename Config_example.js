@@ -1,6 +1,7 @@
 module.exports = {
     WebServer: {
-        Port: ''
+        Port: '',
+        BaseURL: ''
     },
     Data: {
         Status: true, // true or false
