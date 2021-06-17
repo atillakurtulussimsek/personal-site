@@ -46,7 +46,7 @@ Server.on('listening', () => {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useFindAndModify: true
-        }, function (err, status) { if (err) return console.log(err); });
+        }, function (err, status) { if (err) return console.log(`[${chalk.bold.red('MongoDB')}] An error occurred while establishing a database connection: ${err.message}`); });
     }
 });
 
@@ -65,5 +65,11 @@ mongoose.connection.on("connected", () => {
 mongoose.connection.on("disconnected", () => {
     console.log(`[${chalk.bold.red('MongoDB')}] The database connection has been lost. Attempting to reconnect.`);
     DatabaseStatus = false
+    return;
+});
+
+mongoose.connection.on("reconnected", () => {
+    console.log(`[${chalk.bold.green('MongoDB')}] Database connection successfully re-established.`);
+    DatabaseStatus = true
     return;
 });
