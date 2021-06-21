@@ -7,8 +7,8 @@ const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const Config = require('./Config');
+const cors = require('cors');
 const { getIP, skipLog, getTime } = require('./Utils');
-const { Data } = require('./Config');
 
 const App = express();
 const Server = http.createServer(App);
@@ -24,6 +24,7 @@ App.set('views', path.join(__dirname, 'views'));
 
 App.use(morgan(`[${chalk.bold.blue('Web')}] :ip - :status - :method - :url - :response-time ms`, { skip: skipLog }));
 App.use(express.json());
+App.use(cors());
 App.use(express.urlencoded({ extended: false }));
 App.use(cookieParser());
 App.use(session({ secret: Config.Auth.SessionSecret, resave: false, saveUninitialized: true }));
