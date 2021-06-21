@@ -7,7 +7,6 @@ const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const Config = require('./Config');
-const cors = require('cors');
 const { getIP, skipLog, getTime } = require('./Utils');
 
 const App = express();
@@ -24,18 +23,9 @@ App.set('views', path.join(__dirname, 'views'));
 
 App.use(morgan(`[${chalk.bold.blue('Web')}] :ip - :status - :method - :url - :response-time ms`, { skip: skipLog }));
 App.use(express.json());
-App.use(cors());
 App.use(express.urlencoded({ extended: false }));
 App.use(cookieParser());
 App.use(session({ secret: Config.Auth.SessionSecret, resave: false, saveUninitialized: true }));
-
-App.use(function (req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    res.setHeader('Access-Control-Allow-Credentials', true);
-    next();
-});
 
 global.DatabaseStatus = false
 
