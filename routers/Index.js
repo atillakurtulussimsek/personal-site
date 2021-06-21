@@ -10,7 +10,7 @@ router.all('*', async function(req,res,next){
 
 router.get('/', async function(req,res){
     return res.render('index', {
-        
+        CDN: Config.WebServer.cdnURL
     });
 });
 
