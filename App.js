@@ -29,6 +29,14 @@ App.use(express.urlencoded({ extended: false }));
 App.use(cookieParser());
 App.use(session({ secret: Config.Auth.SessionSecret, resave: false, saveUninitialized: true }));
 
+App.use(function (req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    next();
+});
+
 global.DatabaseStatus = false
 
 // CDN Servers
