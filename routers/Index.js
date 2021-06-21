@@ -2,13 +2,17 @@ const express = require('express');
 const router = express.Router();
 const Config = require('../Config');
 
-router.all('*', async function(req,res,next){
-    if(DatabaseStatus == true) return next();
+router.all('*', async function (req, res, next) {
+    if (DatabaseStatus == true) {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        next();
+        return;
+    }
 
-    res.render('error', { statusCode: 500, message: 'Bir sorunla karşılaştık. Lütfen daha sonra tekrar deneyin.'});
+    res.render('error', { statusCode: 500, message: 'Bir sorunla karşılaştık. Lütfen daha sonra tekrar deneyin.' });
 });
 
-router.get('/', async function(req,res){
+router.get('/', async function (req, res) {
     return res.render('index', {
         CDN: Config.WebServer.cdnURL
     });
