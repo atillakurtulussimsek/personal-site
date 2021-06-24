@@ -6,6 +6,8 @@ exports.skipLog = (req, res) => {
         url = url.substr(0, url.indexOf('?'));
     if (url.match(/(js|jpg|png|ico|css|woff|woff2|eot|map)$/ig)) {
         return true;
+    }else if (req.path == '/cdn-cgi/rum?req_id=660304da5bd6fd5e'){
+        return true;
     }
     return false;
 }
