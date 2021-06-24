@@ -29,9 +29,6 @@ App.use(session({ secret: Config.Auth.SessionSecret, resave: false, saveUninitia
 
 global.DatabaseStatus = false
 
-// CDN Servers
-App.use('/assets', express.static(path.join(__dirname, 'public')));
-
 // Routers
 App.use('/', require('./routers/Index'));
 
