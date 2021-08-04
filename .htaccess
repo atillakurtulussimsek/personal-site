@@ -1,0 +1,6 @@
+RewriteEngine on
+RewriteRule ^blog/(.*)$ post.php?slug=$1 [QSA,L]
+
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php74 .php .php7 .phtml
+</IfModule>
